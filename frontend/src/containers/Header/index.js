@@ -5,8 +5,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import MenuItem from '@material-ui/core/MenuItem';
-import Menu from '@material-ui/core/Menu';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
@@ -14,7 +12,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import Button from '@material-ui/core/Button';
 import { NavLink } from 'react-router-dom';
 import { grey } from '@material-ui/core/colors';
 
@@ -44,8 +41,8 @@ const Header = (props) => {
 
             {userName &&
                 <NavLink to='/dashboard' style={{textDecoration: 'none'}}>
-                    <ListItem button onClick={toggleDrawer(false)} style={{ backgroundColor: 'blue' }} >
-                        <ListItemText primary={userName} style={{ color: 'white' }}/>
+                    <ListItem button onClick={toggleDrawer(false)} style={{ backgroundColor: 'cornsilk' }} >
+                        <ListItemText primary={userName} style={{ color: 'blue' }}/>
                     </ListItem>              
               </NavLink>
             }
