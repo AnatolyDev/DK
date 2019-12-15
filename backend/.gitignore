@@ -20,3 +20,5 @@ include/
 include/*
 
 venv/
+
+migrations/
