@@ -26,7 +26,7 @@ def loginUser():
     if not current_user:
         return {'result' : 'User {} not fount'.format(name)}
     
-    expires = datetime.timedelta(minutes=10)
+    expires = datetime.timedelta(minutes=2)
     access_token = create_access_token(identity = name, expires_delta=expires)
     refresh_token = create_refresh_token(identity = name)
     return {
@@ -34,6 +34,16 @@ def loginUser():
             'access_token': access_token,
             'refresh_token': refresh_token
             }
+
+@module.route('/refresh/', methods=['POST'])
+@jwt_refresh_token_required
+def refresh():
+    current_user = get_jwt_identity()
+    ret = {
+        'access_token': create_access_token(identity=current_user),
+        'refresh_token' : create_refresh_token(identity = current_user)
+    }
+    return jsonify(ret), 200
 
 @module.route('/user/', methods=['get'])
 @jwt_required
