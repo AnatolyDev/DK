@@ -1,8 +1,5 @@
 # Flask structure example
 
-Это законченный пример к записи в моем блоге 
-[правильная структура flask приложения](https://the-bosha.ru/2016/06/03/python-flask-freimvork-pravilnaia-struktura-prilozheniia/).
-
 ## Setup
 
 ```
@@ -19,3 +16,6 @@ python manage.py db migrate
 python manage.py db upgrade
 python manage.py runserver
 ```
+
+Взято отсюда:
+https://the-bosha.ru/2016/06/03/python-flask-freimvork-pravilnaia-struktura-prilozheniia/
