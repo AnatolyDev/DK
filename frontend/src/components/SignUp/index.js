@@ -5,6 +5,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { authAPI } from '../../api';
+
 const SignUp = () => {
 
     const [login, setLogin] = useState('');
@@ -12,15 +14,34 @@ const SignUp = () => {
     const [password2, setPassword2] = useState('');
 
     const handleLogin = e => {
-        setLogin(e.target.value)
+        setLogin(e.target.value.trim())
     }
 
     const handlePassword1 = e => {
-        setPassword1(e.target.value)
+        setPassword1(e.target.value.trim())
     }
 
     const handlePassword2 = e => {
-        setPassword2(e.target.value)
+        setPassword2(e.target.value.trim())
+    }
+
+    const handleRegClick = () => {
+        if (!login) {
+            alert('Пустой логин!');
+            return
+        }
+
+        if (!password1) {
+            alert('Пустой пароль!');
+            return
+        }
+
+        if (password1 !== password2) {
+            alert('Пароли не совпадают!');
+            return
+        }
+
+        authAPI.registerUser(login, password1);
     }
 
     return (
@@ -54,8 +75,8 @@ const SignUp = () => {
                     />
                 </div>
                 <div>
-                    <Button onClick={loginClick}>
-                        Войти
+                    <Button onClick={handleRegClick}>
+                        Зарегистрировать
                     </Button>
                 </div>
             </Typography>

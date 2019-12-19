@@ -1,3 +1,14 @@
+.header-main {
+    .header-toolbar {
+        display: flex;
+        flex-flow: row nowrap;
+
+        .header-title {
+            flex-grow: 1;
+        }
+    }
+}
+
 .signin {
     display: flex;
     flex-flow: column nowrap;

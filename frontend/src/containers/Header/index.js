@@ -11,6 +11,7 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Button from '@material-ui/core/Button';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import { NavLink } from 'react-router-dom';
 import { grey } from '@material-ui/core/colors';
@@ -109,13 +110,18 @@ const Header = (props) => {
                 {sideList(props.user)}
             </Drawer>
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar className='header-toolbar'>
                     <IconButton edge="start" className='menu-button' color="inherit" aria-label="menu" onClick={toggleDrawer(true)}>
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className='header-title'>
                         Заголовок
                     </Typography>
+                    <NavLink to='/signup' style={{textDecoration: 'none', color: grey}}>
+                      <Button>
+                        Регистрация
+                      </Button>
+                    </NavLink>
                 </Toolbar>
             </AppBar>
         </div>
