@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { SnackbarProvider, useSnackbar } from 'notistack';
 
-import { authAPI } from '../../api';
+import { authAPI, parseErrorFromAxios } from '../../api';
 
 const SignUp = () => {
 
@@ -52,8 +52,15 @@ const SignUp = () => {
             return
         }
 
-        authAPI.registerUser(login, password1);
-        handleShowSnackbar('success','Отлично!')();
+        try {
+            const r = authAPI.registerUser(login, password1);
+            //console.log(r);
+            handleShowSnackbar('success','Отлично!')();
+        } catch (error) {
+            const errorObj = parseErrorFromAxios(error);
+            handleShowSnackbar('error', errorObj.status)();
+        }
+        
     }
 
     return (

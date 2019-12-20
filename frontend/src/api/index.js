@@ -11,6 +11,29 @@ const instance =  axios.create(
     }
 )
 
+// разбор ошибок запроса
+export const parseErrorFromAxios = error => {
+    if (error.response) {
+        // сервер ответил
+        return {
+            alarms : error.response.data,
+            status : error.response.status
+        }
+    } else if (error.request) {
+        // запрос ушёл, но ответа от сервера не получено
+        return {
+            alarms : {"message" : "Сервер не отвечает"},
+            status : -1
+        }
+    } else {
+        // прочие ошибки
+        return {
+            alarms : {"message" : error.message},
+            status : -2
+        }
+    }
+}
+
 export const authAPI = {
     registerUser(login, password) {
         async function regUserFunc(login, password) {
@@ -22,11 +45,13 @@ export const authAPI = {
                 console.log(1);
                 const r = await instance.post('/auth/user/', u);
                 console.log(2);
+                console.log(r.msg);
                 return r.msg;
             }
             catch(e) {
                 console.log(3);
-                return e
+                console.log(e.message);
+                throw e
             }
         }
         return regUserFunc(login, password);
