@@ -36,30 +36,33 @@ const SignUp = () => {
     const handleRegClick = () => {
         if (!login) {
             handleShowSnackbar('error','Пустой логин!')();
-            //alert('Пустой логин!');
             return
         }
 
         if (!password1) {
             handleShowSnackbar('error','Пустой пароль!')();
-            //alert('Пустой пароль!');
             return
         }
 
         if (password1 !== password2) {
             handleShowSnackbar('error','Пароли не совпадают!')();
-            //alert('Пароли не совпадают!');
             return
         }
 
-        try {
-            const r = authAPI.registerUser(login, password1);
-            //console.log(r);
-            handleShowSnackbar('success','Отлично!')();
-        } catch (error) {
-            const errorObj = parseErrorFromAxios(error);
-            handleShowSnackbar('error', errorObj.status)();
-        }
+        (async function reg() {
+            try {
+                const r = await authAPI.registerUser(login, password1);
+                handleShowSnackbar('success',`Пользователь ${login} зарегистрирован!`)();
+            } catch (error) {
+                const errorObj = parseErrorFromAxios(error);
+                if (errorObj.status < 0) {
+                    handleShowSnackbar('error', errorObj.alarms.message)();
+                } else {
+                    handleShowSnackbar('error', 'Status ' + errorObj.status)();
+                }
+            }
+        })()
+        
         
     }
 

@@ -37,27 +37,37 @@ export const parseErrorFromAxios = error => {
 export const authAPI = {
     registerUser(login, password) {
         async function regUserFunc(login, password) {
-            const u = {
+            const user = {
                 'name' : login,
                 'password' : password
             }
             try {
-                console.log(1);
-                const r = await instance.post('/auth/user/', u);
-                console.log(2);
-                console.log(r.msg);
+                const r = await instance.post('/auth/user/', user);
                 return r.msg;
             }
             catch(e) {
-                console.log(3);
-                console.log(e.message);
+                console.log(0);
                 throw e
             }
         }
+
         return regUserFunc(login, password);
-        /*return instance.post('/auth/user/')
-        .then(
-            response => response.data
-        )*/
+    },
+
+    loginUser(login, password) {
+        async function signIn(login, password) {
+            const user = {
+                'name' : login,
+                'password' : password
+            }
+            try {
+                const r = await instance.post('/auth/login/', user);
+                return r.msg;
+            } catch(e) {
+                throw e
+            }
+        }
+
+        return signIn(login, password);
     }
 }
