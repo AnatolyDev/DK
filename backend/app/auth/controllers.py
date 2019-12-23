@@ -21,13 +21,17 @@ def postUser():
 @module.route('/login/', methods=['post'])
 def loginUser():
     data = request.get_json()
+    if not 'name' in data:
+        return {'msg' : 'Field NAME not found'}, 500
     name = data['name']
+    if not 'password' in data:
+        return {'msg' : 'Field PASSWORD not found'}, 500
     password = data['password']
     current_user = User.query.filter_by(name=name).first()
     if not current_user:
-        return {'result' : 'User {} not fount'.format(name)}
+        return {'msg' : 'User {} not fount'.format(name)}
     if current_user.password != password:
-        return {'result' : 'Password incorrect'}, 500
+        return {'msg' : 'Password incorrect'}, 500
 
     expires = datetime.timedelta(minutes=2)
     access_token = create_access_token(identity = name, expires_delta=expires)

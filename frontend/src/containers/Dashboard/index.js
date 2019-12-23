@@ -10,7 +10,8 @@ import Button from '@material-ui/core/Button';
 
 const Dashboard = (props) => {
 
-    const [editMode, setEditMode] = useState(false);
+    const [editPersonalData, setEditPersonalData] = useState(false);
+    const [editPassword, setEditPassword] = useState(false);
 
     return (
         <>
@@ -22,7 +23,7 @@ const Dashboard = (props) => {
                     </div>
                     <div> 
                         <TextField
-                            disabled={editMode ? false : true}
+                            disabled={editPersonalData ? false : true}
                             id='user-name'
                             label='Имя'
                             defaultValue={props.user}
@@ -30,7 +31,7 @@ const Dashboard = (props) => {
                     </div>
                     <div>
                         <TextField
-                            disabled={editMode ? false : true}
+                            disabled={editPersonalData ? false : true}
                             id='user-email'
                             label='Email'
                             defaultValue={props.email}
@@ -38,29 +39,60 @@ const Dashboard = (props) => {
                     </div>
                     <div>
                         <TextField
-                            disabled={editMode ? false : true}
+                            disabled={editPersonalData ? false : true}
                             id='user-birthday'
                             label='Дата рождения'
                             defaultValue={props.birthday}
                         />
                     </div>
-                    {!editMode &&
+                    {!editPersonalData &&
                         <div>
-                            <Button onClick={() => setEditMode(true)}>
+                            <Button onClick={() => setEditPersonalData(true)}>
                                 Редактировать
                             </Button>
                         </div>
                     }
-                    {editMode &&
+                    {editPersonalData &&
                         <div>
-                            <Button onClick={() => setEditMode(false)}>
+                            <Button onClick={() => setEditPersonalData(false)}>
                                 Сохранить
                             </Button>
-                            <Button onClick={() => setEditMode(false)}>
+                            <Button onClick={() => setEditPersonalData(false)}>
                                 Отмена
                             </Button>
                         </div>
                     }
+                    <div>
+                        <TextField
+                            disabled={editPassword ? false : true}
+                            id='user-password'
+                            type='password'
+                            label='Пароль'
+                            defaultValue={111111}
+                        />
+                    </div>
+                    {!editPassword &&
+                        <div>
+                            <Button onClick={() => setEditPassword(true)}>
+                                Изменить пароль
+                            </Button>
+                        </div>
+                    }
+                    {editPassword &&
+                        <div>
+                            <Button onClick={() => setEditPassword(false)}>
+                                Сохранить
+                            </Button>
+                            <Button onClick={() => setEditPassword(false)}>
+                                Отмена
+                            </Button>
+                        </div>
+                    }
+                    <div>
+                        <Button className='dashboard-btn-exit'>
+                            Выйти
+                        </Button>
+                    </div>
                 </Typography>
             </Container>
         </>

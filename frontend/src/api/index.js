@@ -22,13 +22,13 @@ export const parseErrorFromAxios = error => {
     } else if (error.request) {
         // запрос ушёл, но ответа от сервера не получено
         return {
-            alarms : {"message" : "Сервер не отвечает"},
+            alarms : {"msg" : "Сервер не отвечает"},
             status : -1
         }
     } else {
         // прочие ошибки
         return {
-            alarms : {"message" : error.message},
+            alarms : {"msg" : error.message},
             status : -2
         }
     }
