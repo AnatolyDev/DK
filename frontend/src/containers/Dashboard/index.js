@@ -8,6 +8,8 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import { resetUser } from '../../actions/auth.js';
+
 const Dashboard = (props) => {
 
     const [editPersonalData, setEditPersonalData] = useState(false);
@@ -89,7 +91,7 @@ const Dashboard = (props) => {
                         </div>
                     }
                     <div>
-                        <Button className='dashboard-btn-exit'>
+                        <Button className='dashboard-btn-exit' onClick={props.resetUser}>
                             Выйти
                         </Button>
                     </div>
@@ -105,4 +107,8 @@ const mapStateToProps = state => ({
     birthday : state.auth.birthday
 })
 
-export default connect(mapStateToProps)(Dashboard);
+const mapDispatchToProps = {
+    resetUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

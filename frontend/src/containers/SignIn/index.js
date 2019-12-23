@@ -8,11 +8,14 @@ import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { setUser } from '../../actions/auth.js';
+import { SnackbarProvider, useSnackbar } from 'notistack';
 
 const SignIn = (props) => {
 
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+
+    const { enqueueSnackbar } = useSnackbar();
 
     const handleLogin = e => {
         setLogin(e.target.value)
@@ -29,10 +32,16 @@ const SignIn = (props) => {
 
     const loginClick = () => {
         if (isUser(login, password)) {
-            props.setCurrentUser(login)
-        }
-            else alert('Логин или пароль пустой');
+            props.setUser(login)
+        } else {
+            handleShowSnackbar('error', 'Логин и пароль не должны быть пустыми')();
+        };
     }
+
+    const handleShowSnackbar = (variant, message) => () => {
+        // variant could be success, error, warning, info, or default
+        enqueueSnackbar(message, { variant });
+    };
 
     return (
         <>
@@ -72,12 +81,24 @@ const mapStateToProps = state => ({
     user : state.auth.user
 })
 
-const mapDispatchToProps = (dispatch) => {
+/*const mapDispatchToProps = (dispatch) => {
     return {
         setCurrentUser: (login) => {
             dispatch(setUser(login));
         }
     }
-};
+};*/
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+const mapDispatchToProps = ({
+    setUser
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(
+        function(props) {
+            return (
+                <SnackbarProvider maxSnack={3}>
+                    <SignIn {...props}/>
+                </SnackbarProvider>
+            )
+        }
+    );
