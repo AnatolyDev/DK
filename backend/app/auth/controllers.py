@@ -6,45 +6,46 @@ import datetime
 module = Blueprint('auth', __name__, url_prefix='/auth')
 user_schema = UserSchema()
 
-@module.route('/user/', methods=['post'])
-def postUser():
+@module.route('/users/', methods=['post'])
+def create_user():
     data = request.get_json()
-    name = data['name']
+    login = data['login']
     password = data['password']
-    if User.query.filter_by(name=name).first():
-        return {'msg' : 'User {} already exist'.format(name)}, 500
-    newUser = User(name=name, password=password)
+    if User.query.filter_by(login=login).first():
+        return {'msg' : 'User {} already exist'.format(login)}, 500
+    newUser = User(login=login, password=password)
     db.session.add(newUser)
     db.session.commit()
-    return {'result' : 'Add new user with name={}'.format(name)}, 200
+    return {'result' : 'Add new user with login={}'.format(login)}, 200
 
 @module.route('/login/', methods=['post'])
-def loginUser():
+def login_user():
     data = request.get_json()
-    if not 'name' in data:
-        return {'msg' : 'Field NAME not found'}, 500
-    name = data['name']
+    if not 'login' in data:
+        return {'msg' : 'Field LOGIN not found'}, 500
+    login = data['login']
     if not 'password' in data:
         return {'msg' : 'Field PASSWORD not found'}, 500
     password = data['password']
-    current_user = User.query.filter_by(name=name).first()
+    current_user = User.query.filter_by(login=login).first()
     if not current_user:
-        return {'msg' : 'User {} not fount'.format(name)}
+        return {'msg' : 'User {} not fount'.format(login)}
     if current_user.password != password:
         return {'msg' : 'Password incorrect'}, 500
 
     expires = datetime.timedelta(minutes=2)
-    access_token = create_access_token(identity = name, expires_delta=expires)
-    refresh_token = create_refresh_token(identity = name)
+    access_token = create_access_token(identity = login, expires_delta=expires)
+    refresh_token = create_refresh_token(identity = login)
     return {
-            'message': name,
+            'id' : 1, # должен быть реальный id
+            'message': login,
             'access_token': access_token,
             'refresh_token': refresh_token
             }
 
 @module.route('/refresh/', methods=['POST'])
 @jwt_refresh_token_required
-def refresh():
+def refresh_token():
     current_user = get_jwt_identity()
     ret = {
         'access_token': create_access_token(identity=current_user),
@@ -52,9 +53,44 @@ def refresh():
     }
     return jsonify(ret), 200
 
-@module.route('/user/', methods=['get'])
-@jwt_required
-def getInfo():
+@module.route('/users/<int:id>', methods=['get'])
+#@jwt_required
+def get_user(id):
+    user = User.query.filter_by(id=id).first()
+    if user:
+        return {
+            'id' : user.id,
+            'login' : user.login,
+            'name' : user.name,
+            'surname' : user.surname
+        }, 200
+
     return {
-        'result' : 20
-    }
+        'msg' : 'User id={} not found'.format(id)
+    }, 404
+
+@module.route('/users/<int:id>', methods=['put'])
+# редактирование пользователя
+#@jwt_required
+def edit_user(id):
+    data = request.get_json() or {}
+    user = User.query.filter_by(id=id).first()
+    if not user:
+        return {
+            'msg' : 'User id={} not found'.format(id)
+        }, 404
+
+    if 'login' in data and data['login'].strip():
+        user = data['login']
+
+    if 'name' in data and data['name'].strip():
+        user = data['name']
+
+    if 'surname' in data and data['surname'].strip():
+        user = data['surname']
+
+    if 'password' in data and data['password'].strip():
+        user = data['password']
+    
+    db.session.commit()
+    return jsonify(user.to_dict()), 200
