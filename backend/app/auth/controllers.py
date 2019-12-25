@@ -81,16 +81,16 @@ def edit_user(id):
         }, 404
 
     if 'login' in data and data['login'].strip():
-        user = data['login']
+        user.login = data['login']
 
     if 'name' in data and data['name'].strip():
-        user = data['name']
+        user.name = data['name']
 
     if 'surname' in data and data['surname'].strip():
-        user = data['surname']
+        user.surname = data['surname']
 
     if 'password' in data and data['password'].strip():
-        user = data['password']
+        user.password = data['password']
     
     db.session.commit()
     return jsonify(user.to_dict()), 200
