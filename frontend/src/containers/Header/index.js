@@ -65,10 +65,10 @@ const Header = (props) => {
             </ListItem>              
           </NavLink>
 
-          <NavLink to='/catalog' style={{textDecoration: 'none', color: grey}}>
+          <NavLink to='/afisha' style={{textDecoration: 'none', color: grey}}>
             <ListItem button onClick={toggleDrawer(false)}>
               <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-              <ListItemText primary='Каталог' style={{color: 'black'}}/>
+              <ListItemText primary='Афиша' style={{color: 'black'}}/>
             </ListItem>              
           </NavLink>
 

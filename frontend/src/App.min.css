@@ -1,0 +1,1 @@
+.header-main .header-toolbar{display:flex;flex-flow:row nowrap}.header-main .header-toolbar .header-title{flex-grow:1}.signin{display:flex;flex-flow:column nowrap;align-items:center}.dashboard{display:flex;flex-flow:column nowrap;align-items:center;background-color:tan}.dashboard .dashboard-title{font-size:16px;font-weight:700}.dashboard .dashboard-btn-exit{color:red}
