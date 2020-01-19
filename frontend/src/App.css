@@ -20,9 +20,13 @@
   .dashboard .dashboard-btn-exit {
     color: red; }
 
-.afisha .card {
-  max-width: 345px; }
-.afisha .media {
-  height: 140px; }
+.afisha {
+  display: flex;
+  flex-flow: row wrap; }
+  .afisha .card {
+    max-width: 345px;
+    margin: 20px; }
+  .afisha .media {
+    height: 140px; }
 
 /*# sourceMappingURL=App.css.map */

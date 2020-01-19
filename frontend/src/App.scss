@@ -30,8 +30,11 @@
 }
 
 .afisha {
+    display: flex;
+    flex-flow: row wrap;
     .card {
         max-width: 345px;
+        margin: 20px;
     }
     
     .media {

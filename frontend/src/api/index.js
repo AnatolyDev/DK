@@ -71,3 +71,55 @@ export const authAPI = {
         return signIn(login, password);
     }
 }
+
+export const afishaAPI = {
+    getEvents(startData) {
+        return new Promise(
+            resolve => {
+                setTimeout(
+                    () => {
+                        resolve({
+                            'events' : [
+                                {
+                                    'dateAt' : '2020-05-02',
+                                    'title' : 'Концерт Руки вверх',
+                                    'imageURL' : '/img/1.png',
+                                },
+                                {
+                                    'dateAt' : '2020-05-03',
+                                    'title' : 'Симфония',
+                                    'imageURL' : '/img/2.png',
+                                },,
+                                {
+                                    'dateAt' : '2020-05-04',
+                                    'title' : 'Группа 23',
+                                    'imageURL' : '/img/3.png',
+                                },
+                                {
+                                    'dateAt' : '2020-05-06',
+                                    'title' : 'Группа Краски',
+                                    'imageURL' : '/img/4.png',
+                                },
+                                {
+                                    'dateAt' : '2020-06-06',
+                                    'title' : 'Prodigy',
+                                    'imageURL' : '/img/5.png',
+                                },
+                                {
+                                    'dateAt' : '2020-06-21',
+                                    'title' : 'Eminem',
+                                    'imageURL' : '/img/6.png',
+                                },
+                                {
+                                    'dateAt' : '2020-06-30',
+                                    'title' : 'Plazma',
+                                    'imageURL' : '/img/7.png',
+                                }
+                            ],
+                        })
+                    }
+                ,1000)
+            }
+        )
+    }
+}
