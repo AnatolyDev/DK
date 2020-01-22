@@ -9,6 +9,14 @@
     }
 }
 
+.home {
+    .main-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 .signin {
     display: flex;
     flex-flow: column nowrap;
@@ -33,11 +41,11 @@
     display: flex;
     flex-flow: row wrap;
     .card {
-        max-width: 345px;
+        width: 300px;
         margin: 20px;
-    }
-    
-    .media {
-        height: 140px;
+        .media {
+            height: 150px;
+            background-size: contain;
+        }
     }
 }

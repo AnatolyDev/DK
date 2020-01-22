@@ -4,6 +4,11 @@
   .header-main .header-toolbar .header-title {
     flex-grow: 1; }
 
+.home .main-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
 .signin {
   display: flex;
   flex-flow: column nowrap;
@@ -24,9 +29,10 @@
   display: flex;
   flex-flow: row wrap; }
   .afisha .card {
-    max-width: 345px;
+    width: 300px;
     margin: 20px; }
-  .afisha .media {
-    height: 140px; }
+    .afisha .card .media {
+      height: 150px;
+      background-size: contain; }
 
 /*# sourceMappingURL=App.css.map */

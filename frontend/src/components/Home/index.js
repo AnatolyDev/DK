@@ -2,9 +2,14 @@ import React from 'react';
 
 const Home = () => {
     return (
-        <h1>
-            Домашняя страница
-        </h1>
+        <div className='home'>
+            <h1>
+                Домашняя страница
+            </h1>
+            <div className='main-logo'>
+                <img src='/img/DK-home.png' alt='Дом культуры' />
+            </div>
+        </div>
     )
 }
 

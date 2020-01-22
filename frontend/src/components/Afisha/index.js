@@ -31,7 +31,7 @@ const Afisha = () => {
                         <CardActionArea>
                             <CardMedia
                                 className='media'
-                                image={event.image}
+                                image={event.imageURL}
                                 title={event.title}
                                 />
                             <CardContent>

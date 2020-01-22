@@ -83,22 +83,22 @@ export const afishaAPI = {
                                 {
                                     'dateAt' : '2020-05-02',
                                     'title' : 'Концерт Руки вверх',
-                                    'imageURL' : '/img/1.png',
+                                    'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/325554378fcb12a8b0ebff33c38ba770-full.png',
                                 },
                                 {
                                     'dateAt' : '2020-05-03',
                                     'title' : 'Симфония',
-                                    'imageURL' : '/img/2.png',
+                                    'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/4cefc73fb7e4f7a31510fec31f56b390-full.png',
                                 },,
                                 {
                                     'dateAt' : '2020-05-04',
                                     'title' : 'Группа 23',
-                                    'imageURL' : '/img/3.png',
+                                    'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/0864fd8be21ba524633cc8df49222df0-full.png',
                                 },
                                 {
                                     'dateAt' : '2020-05-06',
                                     'title' : 'Группа Краски',
-                                    'imageURL' : '/img/4.png',
+                                    'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/e646f49793ac2374982c8d687cd98f3f-full.png',
                                 },
                                 {
                                     'dateAt' : '2020-06-06',
