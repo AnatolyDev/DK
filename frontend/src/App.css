@@ -4,6 +4,15 @@
   .header-main .header-toolbar .header-title {
     flex-grow: 1; }
 
+.menu-list li {
+  padding: 0; }
+  .menu-list li .menu-avatar {
+    width: 100%; }
+    .menu-list li .menu-avatar div {
+      margin: auto; }
+  .menu-list li a {
+    width: 100%; }
+
 .home .main-logo {
   display: flex;
   align-items: center;

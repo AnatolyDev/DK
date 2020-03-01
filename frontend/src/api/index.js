@@ -123,3 +123,33 @@ export const afishaAPI = {
         )
     }
 }
+
+export const ticketsAPI = {
+    getTickets(userID) {
+        return new Promise (
+            resolve => {
+                setTimeout(
+                    () => {
+                        resolve({
+                            'tickets' : [
+                                {
+                                    'id' : 1,
+                                    'date_pokupki' : '2020-01-02',
+                                    'event_date' : '2020-05-20',
+                                    'event_title' : 'Концерт Plazma'
+                                },
+                                {
+                                    'id' : 3,
+                                    'date_pokupki' : '2020-01-012',
+                                    'event_date' : '2020-04-20',
+                                    'event_title' : 'Концерт Руки Вверх'
+                                }
+                            ]
+                        })
+                    }
+                    ,1000
+                )
+            }
+        )
+    }
+}

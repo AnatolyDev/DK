@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import Avatar from '@material-ui/core/Avatar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
@@ -34,43 +35,56 @@ const Header = (props) => {
     const sideList = (userName) => (
       <div
         className='menu-list'
-        role="presentation"
+        role='presentation'
         onClick={toggleDrawer(false)}
         onKeyDown={toggleDrawer(false)}
       >
         <List>
-
-            {userName &&
-                <NavLink to='/dashboard' style={{textDecoration: 'none'}}>
-                    <ListItem button onClick={toggleDrawer(false)} style={{ backgroundColor: 'cornsilk' }} >
+          {userName &&
+            <ListItem>
+              <NavLink to='/dashboard' style={{textDecoration: 'none'}}>
+                  <ListItem button onClick={toggleDrawer(false)} style={{ backgroundColor: 'cornsilk' }} >
+                      <div className='menu-avatar'>
+                        <Avatar alt='avatar' src='/static/images/avatar/1.jpg' />
                         <ListItemText primary={userName} style={{ color: 'blue' }}/>
-                    </ListItem>              
+                      </div>
+                      
+                  </ListItem>              
               </NavLink>
-            }
+            </ListItem>
+          }
 
-            {!userName &&
-                <NavLink to='/signin' style={{textDecoration: 'none', color: grey}}>
-                    <ListItem button onClick={toggleDrawer(false)}>
-                        <ListItemText primary='Войти' style={{color: 'black'}}/>
-                    </ListItem>              
+          {!userName &&
+          <ListItem>
+            
+              <NavLink to='/signin' style={{textDecoration: 'none', color: grey}}>
+                <ListItem button onClick={toggleDrawer(false)}>
+                  <ListItemText primary='Войти' style={{color: 'black'}}/>
+                </ListItem>
               </NavLink>
-            }
+            
+            </ListItem>
+          }
 
-            <Divider />
+          <Divider />
 
-          <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
-            <ListItem button onClick={toggleDrawer(false)}>
-              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-              <ListItemText primary='Главная' style={{color: 'black'}}/>
-            </ListItem>              
-          </NavLink>
+          <ListItem>
+            <NavLink to='/' style={{textDecoration: 'none', color: grey}}>
+              <ListItem button onClick={toggleDrawer(false)}>
+                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+                <ListItemText primary='Главная' style={{color: 'black'}}/> 
+              </ListItem>             
+            </NavLink>
+          </ListItem>
 
-          <NavLink to='/afisha' style={{textDecoration: 'none', color: grey}}>
-            <ListItem button onClick={toggleDrawer(false)}>
-              <ListItemIcon>{<InboxIcon />}</ListItemIcon>
-              <ListItemText primary='Афиша' style={{color: 'black'}}/>
-            </ListItem>              
-          </NavLink>
+          <ListItem>
+            <NavLink to='/afisha' style={{textDecoration: 'none', color: grey}}>
+              <ListItem button onClick={toggleDrawer(false)}>
+                <ListItemIcon>{<InboxIcon />}</ListItemIcon>
+                <ListItemText primary='Афиша' style={{color: 'black'}}/>
+              </ListItem>              
+            </NavLink>
+          </ListItem>
 
           <Divider />
 

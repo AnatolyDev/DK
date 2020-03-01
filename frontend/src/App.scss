@@ -9,6 +9,24 @@
     }
 }
 
+.menu-list {
+    li {
+        padding: 0;
+
+        .menu-avatar {
+            width: 100%;
+
+            div {
+                margin: auto;
+            }
+        }
+
+        a {
+            width: 100%;
+        }
+    }
+}
+
 .home {
     .main-logo {
         display: flex;
