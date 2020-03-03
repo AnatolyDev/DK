@@ -81,36 +81,43 @@ export const afishaAPI = {
                         resolve({
                             'events' : [
                                 {
+                                    'id' : 32,
                                     'dateAt' : '2020-05-02',
                                     'title' : 'Концерт Руки вверх',
                                     'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/325554378fcb12a8b0ebff33c38ba770-full.png',
                                 },
                                 {
+                                    'id' : 35,
                                     'dateAt' : '2020-05-03',
                                     'title' : 'Симфония',
                                     'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/4cefc73fb7e4f7a31510fec31f56b390-full.png',
                                 },,
                                 {
+                                    'id' : 56,
                                     'dateAt' : '2020-05-04',
                                     'title' : 'Группа 23',
                                     'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/0864fd8be21ba524633cc8df49222df0-full.png',
                                 },
                                 {
+                                    'id' : 58,
                                     'dateAt' : '2020-05-06',
                                     'title' : 'Группа Краски',
                                     'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/e646f49793ac2374982c8d687cd98f3f-full.png',
                                 },
                                 {
+                                    'id' : 59,
                                     'dateAt' : '2020-06-06',
                                     'title' : 'Prodigy',
                                     'imageURL' : '/img/5.png',
                                 },
                                 {
+                                    'id' : 62,
                                     'dateAt' : '2020-06-21',
                                     'title' : 'Eminem',
                                     'imageURL' : '/img/6.png',
                                 },
                                 {
+                                    'id' : 64,
                                     'dateAt' : '2020-06-30',
                                     'title' : 'Plazma',
                                     'imageURL' : '/img/7.png',
@@ -121,7 +128,50 @@ export const afishaAPI = {
                 ,1000)
             }
         )
-    }
+    },
+
+    getEvent(id) {
+        return new Promise(
+            resolve => {
+                setTimeout(
+                    () => {
+                        resolve({
+                            'event' :
+                                {
+                                    'id' : id,
+                                    'dateAt' : '2020-05-02',
+                                    'title' : 'Концерт Руки вверх',
+                                    'description' : 'Уникальный концерт легендарной группы в нашем городе',
+                                    'imageURL' : 'https://cdn1.savepice.ru/uploads/2020/1/22/325554378fcb12a8b0ebff33c38ba770-full.png',
+                                }
+                        })
+                    }
+                ,1000)
+            }
+        )
+    },
+
+    getPlaces(concertID) {
+        return new Promise(
+            resolve => {
+                setTimeout(
+                    () => {
+                        resolve({
+                            'places' : [
+                                [false, false, false, false, false],
+                                [false, false, true, true, false],
+                                [false, true, false, false, false],
+                                [false, false, false, false, false],
+                                [true, false, false, false, false],
+                                [false, true, false, false, false],
+                                [false, false, false, false, false],
+                            ]
+                        })
+                    }
+                ,1000)
+            }
+        )
+    },
 }
 
 export const ticketsAPI = {

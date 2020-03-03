@@ -7,6 +7,7 @@ import SignUp from '../SignUp';
 import Dashboard from '../../containers/Dashboard';
 import NotFound from '../NotFound';
 import Afisha from '../Afisha';
+import Concert from '../Concert';
 
 const Main = () => {
     return (
@@ -16,7 +17,8 @@ const Main = () => {
                 <Route path='/signin' component={SignIn} />
                 <Route path='/signup' component={SignUp} />
                 <Route path='/dashboard' component={Dashboard} />
-                <Route path='/afisha' component={Afisha} />
+                <Route path='/afisha' exact component={Afisha} />
+                <Route path='/afisha/:id' component={Concert} />
                 <Route component={NotFound} />
             </Switch>
         </>

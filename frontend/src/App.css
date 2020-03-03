@@ -44,4 +44,11 @@
       height: 150px;
       background-size: contain; }
 
+.concert-img {
+  height: 300px; }
+  .concert-img img {
+    max-width: 100%;
+    height: auto;
+    max-height: 100%; }
+
 /*# sourceMappingURL=App.css.map */

@@ -67,3 +67,13 @@
         }
     }
 }
+
+.concert-img {
+    height: 300px;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        max-height:100%
+    }
+}
