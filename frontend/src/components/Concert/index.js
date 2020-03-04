@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
+import SelectPlace from './SelectPlace';
+
 import { afishaAPI } from '../../api';
 
 const Concert = (props) => {
@@ -11,6 +13,7 @@ const Concert = (props) => {
 
     const [ev, setEv] = useState({});
     const [loading, setLoading] = useState(true);
+    const [visibleSelectForm, setVisibleSelectForm] = useState(false);
 
     useEffect(
         () => {
@@ -43,9 +46,12 @@ const Concert = (props) => {
                     <p>
                         Дата : {ev.dateAt}
                     </p>
-                    <button>
+                    <button onClick={() => setVisibleSelectForm(true)}>
                         Выбрать место
                     </button>
+                    {visibleSelectForm &&
+                        <SelectPlace />
+                    }
                 </Container>
             }
             
